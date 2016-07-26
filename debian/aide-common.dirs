@@ -1,0 +1,10 @@
+usr/bin
+usr/sbin
+etc/aide
+etc/aide/aide.conf.d
+etc/aide/aide.settings.d
+etc/cron.daily
+etc/default
+var/lib/aide
+var/log/aide
+usr/share/lintian/overrides

@@ -1,0 +1,107 @@
+# 2005-10-27 - Marco Ferra <mferra@sdf.lonestar.org> (initial translation)
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: aide 0.10-11\n"
+"Report-Msgid-Bugs-To: aide@packages.debian.org\n"
+"POT-Creation-Date: 2013-06-09 22:00+0200\n"
+"PO-Revision-Date: 2006-09-09 18:45+0100\n"
+"Last-Translator: Marco Ferra <mferra@sdf.lonestar.org>\n"
+"Language-Team: Portuguese <traduz@debianpt.org>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../aide-common.templates:1001
+msgid "Initialize AIDE database?"
+msgstr "Inicializar a base de dados AIDE?"
+
+#. Type: boolean
+#. Description
+#: ../aide-common.templates:1001
+msgid ""
+"Before AIDE can be used, you will have to initialize a database. You can "
+"immediately do this here, or run the '/usr/sbin/aideinit' script from a "
+"shell later."
+msgstr ""
+"Antes que o AIDE possa ser usado terá de inicializar uma base de dados. Pode "
+"fazer isso imediatamente aqui ou correr mais tarde o script '/usr/sbin/"
+"aideinit'."
+
+#. Type: boolean
+#. Description
+#: ../aide-common.templates:2001
+msgid "Overwrite existing /var/lib/aide/aide.db.new?"
+msgstr "Escrever por cima do /var/lib/aide/aide.db.new existente?"
+
+#. Type: boolean
+#. Description
+#: ../aide-common.templates:2001
+msgid ""
+"You have already a newly generated AIDE database in /var/lib/aide/aide.db."
+"new. If you choose this option, the existing file will be be overwritten by "
+"the new data obtained from the current state of your file system."
+msgstr ""
+"Tem uma base de dados nova para o AIDE em /var/lib/aide/aide.db.new. Se "
+"optar por esta escolha o ficheiro existente será sobre-escrito por dados "
+"actualizados do estado do seu sistema de ficheiros."
+
+#. Type: boolean
+#. Description
+#: ../aide-common.templates:3001
+msgid "Copy aide.db.new to aide.db?"
+msgstr "Copiar o aide.db.new para aide.db?"
+
+#. Type: boolean
+#. Description
+#: ../aide-common.templates:3001
+msgid ""
+"It is advisable for you to first look over /var/lib/aide/aide.db.new file "
+"before replacing the existing db. You can have the package replace the "
+"database anyway here."
+msgstr ""
+"É aconselhável que veja primeiro o ficheiro /var/lib/aide/aide.db.new antes "
+"de substituir a base de dados existente. Pode querer substituir a base de "
+"dados do pacote de qualquer das formas aqui."
+
+#. Type: boolean
+#. Description
+#: ../aide-common.templates:3001
+msgid ""
+"If you do not choose this option, you will need to copy the file /var/lib/"
+"aide/aide.db.new to /var/lib/aide/aide.db before AIDE can use it."
+msgstr ""
+"Se não optar por esta escolha terá de copiar o ficheiro /var/lib/aide/aide."
+"db.new para /var/lib/aide/aide.db antes que o AIDE o possa usar."
+
+#~ msgid "Move AIDE data files from old directory to new?"
+#~ msgstr ""
+#~ "Mover os ficheiros de dados do AIDE de um directório antigo para um novo?"
+
+#~ msgid ""
+#~ "AIDE now stores its databases in /var/lib/aide by default. It appears "
+#~ "that you have an older version installed which uses /usr/lib/aide. You "
+#~ "can have the data files moved automatically."
+#~ msgstr ""
+#~ "Por omissão a AIDE agora guarda as suas base de dados em /var/lib/aide. "
+#~ "Parece que tem uma versão antiga instalada que usa o /usr/lib/aide. Pode "
+#~ "querer que os ficheiros sejam movidos automaticamente."
+
+#~ msgid "Daily reports are mailed to root by default"
+#~ msgstr "Por omissão os relatórios diários são enviados para o root"
+
+#~ msgid "You may change that in /etc/default/aide."
+#~ msgstr "Pode alterar isto em /etc/default/aide."
+
+#~ msgid "Before AIDE can be used, you will have to initialize a database"
+#~ msgstr "Antes de poder usar o AIDE deve inicializar uma base de dados."
+
+#~ msgid "In order to do this, simply use the '/usr/sbin/aideinit' script."
+#~ msgstr ""
+#~ "Para fazer isto basta correr simplesmente o script '/usr/sbin/aideinit'."
+
+#~ msgid "You must install aide.db.new as /var/lib/aide/aide.db"
+#~ msgstr "Deve instalar o aide.db.new como /var/lib/aide/aide.db"

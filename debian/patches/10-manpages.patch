@@ -1,0 +1,51 @@
+Author: Marc Haber <mh+debian-packages@zugschlus.de>
+Description: Adjust manpages to fit debian specific configuration
+Forwarded: no
+Last-Update: 2016-07-26
+--- a/doc/aide.1.in
++++ b/doc/aide.1.in
+@@ -101,19 +101,22 @@
+ 
+ .PP
+ .SH FILES
+-.IP \fB@sysconfdir@/aide.conf\fR
++.IP \fB/etc/aide/aide.conf\fR
+ Default aide configuration file.
+-.IP \fB@sysconfdir@/aide.db\fR
++.IP \fB/etc/aide/aide.conf.d\fR
++Config snippets which are automatically concatenated to the
++configuration file by update-aide.conf. This is a Debian extension.
++.IP \fBaide.db\fR
+ Default aide database.
+-.IP \fB@sysconfdir@/aide.db.new\fR
++.IP \fBaide.db.new\fR
+ Default aide output database.
+ .SH SEE ALSO
+ .BR aide.conf (5)
+ .BR manual.html
+ .SH BUGS
+-There are probably bugs in this release. Please report them
+-at http://sourceforge.net/projects/aide . Bug fixes are more than welcome.
+-Unified diffs are preferred.
++There are probably bugs in this release. Please report them at
++http://sourceforge.net/projects/aide and to the Debian BTS. Bug fixes
++are more than welcome. Unified diffs are preferred.
+ .SH DISCLAIMER
+ All trademarks are the property of their respective owners.
+ No animals were harmed while making this webpage or this piece of
+--- a/doc/aide.conf.5.in
++++ b/doc/aide.conf.5.in
+@@ -30,11 +30,11 @@
+ .IP "database"
+ The url from which database is read. There can only be one of these
+ lines. If there are multiple database lines then the first is used.
+-The default value is "@prefix@/etc/aide.db".
++There is no valid default value in the Debian packages!
+ .IP "database_out"
+ The url to which the new database is written to. There can only be one
+ of these lines. If there are multiple database_out lines then the
+-first is used. The default value is "@prefix@/etc/aide.db.new".
++first is used. There is no valid default value in the Debian packages!
+ .IP "database_new"
+ The url from which the other database for \-\-compare is read.
+ There is no default for this one.

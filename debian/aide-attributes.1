@@ -1,0 +1,53 @@
+.TH aide-attributes 1 "May 30, 2010"
+.SH NAME
+aide-attributes \- decode and compare hex-encoded attribute numbers
+.SH SYNOPSIS
+.B aide\-attributes
+.I HEX_NUMBER
+.RI [ HEX_NUMBER ]
+.SH DESCRIPTION
+.B aide-attributes
+decodes hex-encoded attribute numbers to attribute names or displays the
+differences between two attribute numbers. The script is useful to decode
+the attribute numbers as shown in the 'Entry X in database has different
+attributes: OLD_HEX_NUMBER NEW_HEX_NUMBER' message.
+.SH EXAMPLES
+.PP
+Decode the hex number 'c3d' to attribute names:
+.RS
+.fam C
+$ aide-attributes c3d
+.br
+filename
+.br
+perm
+.br
+uid
+.br
+gid
+.br
+size
+.br
+bcount
+.br
+lnkcount
+.fam T
+.RE
+.PP
+Display the differences between two hex-encoded attribute numbers:
+.RS
+.fam C
+$ aide-attributes c3d fbd
+.br
++ctime
+.br
++mtime
+.br
++inode
+.fam T
+.RE
+.SH "SEE ALSO"
+\fBaide\fR(1)
+.SH "AUTHOR"
+This manual was written by Hannes von Haugwitz <hannes@vonhaugwitz.com>,
+for the Debian GNU/Linux system (but may be used by others).

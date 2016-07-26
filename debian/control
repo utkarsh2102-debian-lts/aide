@@ -1,0 +1,106 @@
+Source: aide
+Section: admin
+Priority: optional
+Maintainer: Aide Maintainers <pkg-aide-maintainers@lists.alioth.debian.org>
+Uploaders: Marc Haber <mh+debian-packages@zugschlus.de>, Mike Markley <mike@markley.org>, Hannes von Haugwitz <hannes@vonhaugwitz.com>
+Build-Depends: debhelper (>= 9),
+ dh-autoreconf,
+ debconf-utils,
+ zlib1g-dev,
+ libpcre3-dev,
+ libmhash-dev (>= 0.9.7),
+ flex (>= 2.5.32),
+ bison,
+ po-debconf (>= 0.5.0),
+ libselinux1-dev [linux-any],
+ libaudit-dev [linux-any],
+ libattr1-dev,
+ libacl1-dev,
+ e2fslibs-dev
+Vcs-Git: https://anonscm.debian.org/git/pkg-aide/aide.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-aide/aide.git
+Homepage: http://aide.sourceforge.net
+Standards-Version: 3.9.8
+
+Package: aide
+Architecture: any
+Depends: ${misc:Depends}
+Recommends: aide-common (= ${source:Version})
+Built-Using: ${Built-Using}
+Provides: aide-binary
+Conflicts: aide-xen, aide-dynamic
+Description: Advanced Intrusion Detection Environment - static binary
+ AIDE is an intrusion detection system that detects changes to files on
+ the local system. It creates a database from the regular expression rules
+ that it finds from the config file. Once this database is initialized
+ it can be used to verify the integrity of the files. It has several
+ message digest algorithms (md5, sha1, rmd160, tiger, haval, etc.) that are
+ used to check the integrity of the file. More algorithms can be added
+ with relative ease. All of the usual file attributes can also be checked
+ for inconsistencies.
+ .
+ This package contains the statically linked binary for "normal"
+ systems.
+
+Package: aide-xen
+Priority: extra
+Architecture: any
+Depends: ${misc:Depends}
+Recommends: aide-common (= ${source:Version})
+Built-Using: ${Built-Using}
+Provides: aide-binary
+Conflicts: aide, aide-dynamic
+Description: Advanced Intrusion Detection Environment - static binary for XEN
+ AIDE is an intrusion detection system that detects changes to files on
+ the local system. It creates a database from the regular expression rules
+ that it finds from the config file. Once this database is initialized
+ it can be used to verify the integrity of the files. It has several
+ message digest algorithms (md5, sha1, rmd160, tiger, haval, etc.) that are
+ used to check the integrity of the file. More algorithms can be added
+ with relative ease. All of the usual file attributes can also be checked
+ for inconsistencies.
+ .
+ This package contains the statically linked binary for XEN-enabled
+ systems and should be used in Dom0 and DomU.
+
+Package: aide-dynamic
+Priority: extra
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: aide-common (= ${source:Version})
+Provides: aide-binary
+Conflicts: aide, aide-xen
+Description: Advanced Intrusion Detection Environment - dynamic binary
+ AIDE is an intrusion detection system that detects changes to files on
+ the local system. It creates a database from the regular expression rules
+ that it finds from the config file. Once this database is initialized
+ it can be used to verify the integrity of the files. It has several
+ message digest algorithms (md5, sha1, rmd160, tiger, haval, etc.) that are
+ used to check the integrity of the file. More algorithms can be added
+ with relative ease. All of the usual file attributes can also be checked
+ for inconsistencies.
+ .
+ This package contains a dynamically linked binary and should only be
+ used in exeptional circumstances. To avoid exposure to trojaned
+ libraries, it is advised to use one of the statically linked binaries.
+
+Package: aide-common
+Architecture: all
+Depends: ${misc:Depends}, aide (>= 0.15.1-6) | aide-xen (>= 0.15.1-6) | aide-dynamic (>= 0.15.1-6), bsd-mailx | mailx, liblockfile1, ucf (>= 2.0020)
+Recommends: cron
+Description: Advanced Intrusion Detection Environment - Common files
+ AIDE is an intrusion detection system that detects changes to files on
+ the local system. It creates a database from the regular expression rules
+ that it finds from the config file. Once this database is initialized
+ it can be used to verify the integrity of the files. It has several
+ message digest algorithms (md5, sha1, rmd160, tiger, haval, etc.) that are
+ used to check the integrity of the file. More algorithms can be added
+ with relative ease. All of the usual file attributes can also be checked
+ for inconsistencies.
+ .
+ This package contains base and configuration files that are needed to
+ run the actual binaries.
+ .
+ You will almost certainly want to tweak the configuration file in
+ /etc/aide/aide.conf or drop your own config snippets into
+ /etc/aide/aide.conf.d.

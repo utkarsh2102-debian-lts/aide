@@ -1,0 +1,4 @@
+debian/aideinit.8
+debian/update-aide.conf.8
+debian/aide.wrapper.8
+debian/aide-attributes.1

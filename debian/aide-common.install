@@ -1,0 +1,9 @@
+debian/aide.conf usr/share/aide/config/aide
+debian/aide.conf.d usr/share/aide/config/aide
+debian/aide.settings.d usr/share/aide/config/aide
+debian/default/aide usr/share/aide/config/default
+debian/cron.daily/aide usr/share/aide/config/cron.daily
+debian/aideinit usr/sbin
+debian/update-aide.conf usr/sbin
+debian/wrapper/aide.wrapper usr/bin
+debian/lintian/overrides/aide-common usr/share/lintian/overrides

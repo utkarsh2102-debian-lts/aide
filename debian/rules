@@ -1,0 +1,59 @@
+#!/usr/bin/make -f
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DEB_HOST_ARCH_OS ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+
+buildpackages=aide aide-xen aide-dynamic aide-common
+
+COMMON_CONFIGURE_ARGS=--prefix=/usr \
+					  --sysconfdir=/var/lib/aide/please-dont-call-aide-without-parameters \
+					  --with-config_file=/dev/null --with-zlib \
+					  --with-xattr --with-posix-acl --with-e2fsattrs
+EXTRA_CONFIGURE_ARGS=
+
+BUILT_USING_PACKAGES= zlib1g-dev libpcre3-dev libmhash-dev libattr1-dev libacl1-dev e2fslibs-dev libc-dev-bin
+
+ifeq ($(DEB_HOST_ARCH_OS),linux)
+EXTRA_CONFIGURE_ARGS+= --with-selinux --with-audit
+BUILT_USING_PACKAGES+= libselinux1-dev libaudit-dev
+endif
+
+BUILT_USING=$(shell dpkg-query -f '$${source:Package} (= $${source:Version}), ' -W $(BUILT_USING_PACKAGES))
+
+%:
+		dh $@ --with autoreconf
+
+override_dh_auto_configure-arch:
+	mkdir -p aide && cd aide && ../configure $(COMMON_CONFIGURE_ARGS) $(EXTRA_CONFIGURE_ARGS)
+	mkdir -p aide-xen && cd aide-xen && ../configure $(COMMON_CONFIGURE_ARGS) $(EXTRA_CONFIGURE_ARGS) --with-extra-libs="-L/usr/lib/xen/"
+	mkdir -p aide-dynamic && cd aide-dynamic && ../configure $(COMMON_CONFIGURE_ARGS) $(EXTRA_CONFIGURE_ARGS) --disable-static
+
+override_dh_auto_build-arch:
+	dh_auto_build --builddirectory aide
+	dh_auto_build --builddirectory aide-xen
+	dh_auto_build --builddirectory aide-dynamic
+
+override_dh_auto_install-arch:
+	dh_auto_install --builddirectory aide --destdir debian/aide
+	dh_auto_install --builddirectory aide-xen --destdir debian/aide-xen
+	dh_auto_install --builddirectory aide-dynamic --destdir debian/aide-dynamic
+
+override_dh_auto_clean-arch:
+	dh_auto_clean --builddirectory aide
+	dh_auto_clean --builddirectory aide-xen
+	dh_auto_clean --builddirectory aide-dynamic
+
+override_dh_autoreconf-indep override_dh_auto_configure-indep override_dh_auto_build-indep:
+
+override_dh_gencontrol:
+	dh_gencontrol -- -VBuilt-Using="$(BUILT_USING)"
+
+override_dh_auto_install-indep:
+	cp contrib/aide-attributes.sh debian/aide-common/usr/bin/aide-attributes
+
+override_dh_auto_clean-indep:
+
+override_dh_clean:
+	dh_clean
+	debconf-updatepo
