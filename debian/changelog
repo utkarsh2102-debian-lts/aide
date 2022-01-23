@@ -1,3 +1,10 @@
+aide (0.16-1+deb9u1) stretch-security; urgency=high
+
+  * Apply backported patch to fix heap-based buffer
+    overflow in base64 functions. (CVE-2021-45417)
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Sun, 23 Jan 2022 23:56:00 +0530
+
 aide (0.16-1) unstable; urgency=medium
 
   * new upstream version, changes include:
